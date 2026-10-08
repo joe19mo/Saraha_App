@@ -38,7 +38,9 @@ const userSchema = new mongoose.Schema({
         type:String,
         enum:["male","female"],
         default:"male"
-   },
+   },phone:{
+    type:String
+},
    profileImage:String,
    provider:{
     type:String,
