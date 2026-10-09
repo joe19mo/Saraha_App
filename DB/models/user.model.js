@@ -7,14 +7,14 @@ const userSchema = new mongoose.Schema({
         required:true,
         trim:true,
         minLength : 2,
-        maxLength : 6
+        maxLength : 20
    },
     lName:{
         type: String,
         required:true,
         trim:true,
         minLength : 2,
-        maxLength : 6
+        maxLength : 20
    },
    email:{
         type: String,
@@ -25,12 +25,16 @@ const userSchema = new mongoose.Schema({
    },
    password:{
         type:String,
-        required:true,
+        required:function(){
+            return this.provider === "system"? true : false
+        },
         trim:true
    },
    age:{
         type:Number,
-        required:true,
+         required:function(){
+            return this.provider === "system"? true : false
+        },
         min:18,
         max:60
    },
